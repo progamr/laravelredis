@@ -25,9 +25,15 @@
             var chatController = function(){
                 var ctrl = this;
                 ctrl.users = ['test', 'test2', 'test3'];
-                socket.on('test-channel:App\\Events\\UserSignedUp', function(data) {
-                    ctrl.users.push(data.data.username);
-                    console.log(ctrl.users);
+                var id = 1;
+                socket.on('test-channel' + id + ':App\\Events\\UserSignedUp', function(data) {
+                    if(data.data.id == 1) {
+                        ctrl.users.push(data.data.username);
+                        console.log(ctrl.users);
+                    }
+                    else {
+                        console.log('foo');
+                    }
                 });
             }
             module.controller('chatController', chatController);

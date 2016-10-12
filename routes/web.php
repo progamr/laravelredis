@@ -22,7 +22,8 @@ Route::get('/', function () {
     // 3- use socket.io to emit to all clients
     $data = [
         'event' => 'userSignedUp',
-        'username' => 'amr mohamed'
+        'username' => 'amr mohamed',
+        'id'       => 1,
     ];
     //Redis::publish('test-channel', json_encode($data));
     event(new UserSignedUp($data));
